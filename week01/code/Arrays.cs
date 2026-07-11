@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+
 public static class Arrays
 {
     /// <summary>
@@ -8,12 +11,20 @@ public static class Arrays
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
     public static double[] MultiplesOf(double number, int length)
     {
-        // TODO Problem 1 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // Problem 1 Plan: MultiplesOf Function using an Array
+        // 1. Create a new array of doubles with a length equal to the number of multiples.
+        // 2. Use a loop to go from 0 to the number of multiples - 1.
+        // 3. On each loop iteration, calculate the multiple by multiplying the starting number by (i + 1).
+        // 4. Store that value in the array at index i.
+        // 5. After the loop is complete, return the array.
+        double[] multiples = new double[length];
 
-        return []; // replace this return statement with your own
+        for (int i = 0; i < length; i++)
+        {
+            multiples[i] = number * (i + 1);
+        }
+
+        return multiples;
     }
 
     /// <summary>
@@ -25,9 +36,29 @@ public static class Arrays
     /// </summary>
     public static void RotateListRight(List<int> data, int amount)
     {
-        // TODO Problem 2 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // Problem 2 Plan: RotateListRight Function using a List<T>
+        // 1. The function takes a list and an amount to rotate to the right.
+        // 2. First, use GetRange() to get the last 'amount' elements from the list.
+        // 3. Then, use GetRange() again to get the remaining elements from the front.
+        // 4. Clear the original list.
+        // 5. Use AddRange() to add the two parts in rotated order: last part first, then the front part.
+        // 6. This creates a rotated version of the list.
+
+        int count = data.Count;
+
+        if (count <= 1 || amount <= 0 || amount == count)
+            return;
+
+        // Get the last 'amount' elements
+        List<int> tail = data.GetRange(count - amount, amount);
+
+        // Get the remaining elements from the beginning
+        List<int> head = data.GetRange(0, count - amount);
+
+        // Clear the original list and add rotated elements
+        data.Clear();
+        data.AddRange(tail);
+        data.AddRange(head);
     }
 }
+

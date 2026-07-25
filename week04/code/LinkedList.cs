@@ -32,7 +32,6 @@ public class LinkedList : IEnumerable<int>
     /// </summary>
     public void InsertTail(int value)
     {
-        // TODO Problem 1
         Node newNode = new(value);
         if (_tail is null)
         {
@@ -76,7 +75,6 @@ public class LinkedList : IEnumerable<int>
     /// </summary>
     public void RemoveTail()
     {
-        // TODO Problem 2
         if (_head == _tail)
         {
             _head = null;
@@ -130,7 +128,6 @@ public class LinkedList : IEnumerable<int>
     /// </summary>
     public void Remove(int value)
     {
-        // TODO Problem 3
         Node? curr = _head;
 
         while (curr is not null)
@@ -166,7 +163,6 @@ public class LinkedList : IEnumerable<int>
     /// </summary>
     public void Replace(int oldValue, int newValue)
     {
-        // TODO Problem 4
        Node? curr = _head;
 
         while (curr is not null)
@@ -207,7 +203,6 @@ public class LinkedList : IEnumerable<int>
     /// </summary>
     public IEnumerable Reverse()
     {
-        // TODO Problem 5
         var curr = _tail; // Start at the end since this is a backward iteration.
 
         while (curr is not null)

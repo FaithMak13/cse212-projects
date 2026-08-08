@@ -41,21 +41,21 @@ public Person GetNextPerson()
 
         Person person = _people.Dequeue();
 
-        if (person.Turns <= 0)
+        if (person.Turns > 1)
         {
-            //Infinite turns - put them back in the queue
+            person.Turns -= 1;
             _people.Enqueue(person);
         }
-        else
+        else if (person.Turns <= 0)
         {
-            person.Turns--;
-            if (person.Turns > 0)
-            {
-                //Still has turns remaining
-                _people.Enqueue(person);
-            }
-        }  
-
+            // Person has infinite turns, so we don't decrement their turns
+            _people.Enqueue(person);
+        }
         return person;
+    }
+
+    public override string ToString()
+    {
+        return _people.ToString();
     }
 }
